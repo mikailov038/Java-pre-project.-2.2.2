@@ -6,6 +6,7 @@ import web.dao.CarDao;
 import web.model.CarModel;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CarServiceImpl implements CarService {
@@ -18,7 +19,11 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<CarModel> getCarsList() {
-        return carDao.getCarModelsList();
+    public List<CarModel> getCarsList(int count) {
+        if (count >= 5) {
+            return carDao.getCarModelsList();
+        } else {
+            return carDao.getCarModelsList().stream().limit(count).collect(Collectors.toList());
+        }
     }
 }

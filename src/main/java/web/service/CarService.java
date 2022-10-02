@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface CarService {
 
-    List<CarModel> getCarsList();
+    List<CarModel> getCarsList(int count);
 }
